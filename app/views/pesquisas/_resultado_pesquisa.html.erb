@@ -1,0 +1,31 @@
+<div id='resultado_pesquisa' class='panel panel-info'  style='display:show'>
+  <div class='panel-heading'>
+      <b>Significados  <%= "para #{resultado['data'].word}" if resultado['found'] %></b>
+  </div>
+    <div class='panel-body'>
+      <% if resultado['found'] %>
+        <ol>
+          <% resultado['data'].entries.each do |entrada| %>
+            <li>
+              <b><%= "#{entrada.word} (#{entrada.grammar_group})" %></b>
+              <% unless entrada.examples.empty? %>
+                <ul>
+                  <% entrada.examples.each do |exemplo| %>
+                    <%= exemplo.text %>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      <% else %>
+        <p> Resultado não encontrado, tente alguma das seguintes palavras </p>
+        <ul>
+        <%= resultado['data']['suggestion'].each do |sugestao| %>
+        <li> <%= sugestao %></li>
+        <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

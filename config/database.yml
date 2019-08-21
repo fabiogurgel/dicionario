@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 20
+  username: postgres
+  password: postgres
+  port: 5432
+  host: localhost
+
+development:
+  <<: *default
+  database: dicionario_development
+  schema_search_path: adm_dicionario
+
+test:
+  <<: *default
+  database: dicionario_test
+
+production:
+  <<: *default
+  database: dicionario_production

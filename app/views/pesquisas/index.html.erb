@@ -1,0 +1,15 @@
+<div id='pesquisa' class='panel panel-info'>
+  <div class='panel-heading'><b>Dicionário</b></div>
+    <div class='panel-body'>
+      <%= form_for :pesquisa, url: { action: 'buscar_palavra', class: 'form_control'}, remote: true do |f| %>
+        <div class='col-md-2'>
+          <b> Digite a palavra: </b><br/>
+          <%= f.text_field :palavra, required: true, class: 'form-control' %><br/>
+          <%= f.submit 'Encontrar significado',  id: 'sub', class: 'btn btn-info' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+  
+<div id='resultado_pesquisa'/>
